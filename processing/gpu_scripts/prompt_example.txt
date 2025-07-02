@@ -1,0 +1,300 @@
+---------------------------
+FIRST PROMPT – SIMPLE JSON
+---------------------------
+
+You are a clinical information extraction assistant.
+
+Your task is to extract vital signs from a discharge summary clinical note, and assign each set of vitals to one of the following temporal contexts, if present:
+1.Emergency Department
+2.Admission
+3.Transfer
+4.Discharge
+5.Unknown (if the time is not clear)
+
+Vitals to extract:
+- Body Temperature
+- Systolic Blood Pressure
+- Diastolic Blood Pressure
+- Heart Rate
+- Respiratory Rate
+- Oxygen Saturation
+
+Handling Ranges and Multiple Values:
+- If both a main value and a range are present (e.g., HR: 62 (62–81)), return only the main value (e.g. 62).
+- If only a range is available (e.g. O2 Sat: (87–99)), return the range in list with "min-max" format (e.g. [87, 99]).
+
+Output Format:
+Return a JSON object where each key is one of the section names above.
+Each section's value should be a dictionary of the extracted vital signs.
+Include only the contexts and fields that appear in the note.
+Do not include any units, only return numeric values.
+Return only the JSON, no explanations or comments.
+If there are no vitals return {}
+
+Example 1:
+Example input:
+  "Patient seen in ED. T: 98.6, HR: 75, BP: 124/66. RR: 16. O2 Sat: 94%. Discharge exam: HR: 80."
+Expected output:
+  {
+    "Emergency Department": {
+      "Body Temperature": 98.6,
+      "Systolic Blood Pressure": 124,
+      "Diastolic Blood Pressure": 66,
+      "Heart Rate": 75,
+      "Respiratory Rate": 16,
+      "Oxygen Saturation": 94
+    },
+    "Discharge": {
+      "Heart Rate": 80
+    }
+  }
+
+Example 2:
+Example input:
+  "On the floor, vitals notable for T:95.6 BP:175/82 P:71 R:18 O2:99RA. Physical Exam: VS T: 97.6 BP: 170-180/85 P: 60s RR: 20 SPO2: 100RA"
+Expected output:
+  {
+    "Admission": {
+      "Body Temperature": 97.6,
+      "Systolic Blood Pressure": [170, 180],
+      "Diastolic Blood Pressure": 85,
+      "Heart Rate": 60,
+      "Respiratory Rate": 20,
+      "Oxygen Saturation": 100
+    },
+    "Unknown": {
+      "Body Temperature": 95.6,
+      "Systolic Blood Pressure": 175,
+      "Diastolic Blood Pressure": 82,
+      "Heart Rate": 71,
+      "Respiratory Rate": 18,
+      "Oxygen Saturation": 99
+    }
+  }
+
+Example 3:
+Example input:
+  "Physical Exam: ADMISSION PHYSICAL EXAM: Vitals: Tmax99.1 HR__ BP168/59 RR20 SPO2100%RA DISCHARGE PHYSICAL EXAM: Vitals: T98.0, HR68(68-78), BP184/100(165-184/76-100), 98%RA "
+Expected output:
+  {
+    "Admission": {
+      "Body Temperature": 99.1,
+      "Systolic Blood Pressure": 168,
+      "Diastolic Blood Pressure": 59,
+      "Respiratory Rate": 20,
+      "Oxygen Saturation": 100
+    },
+    "Discharge": {
+      "Body Temperature": 98.0,
+      "Systolic Blood Pressure": 184,
+      "Diastolic Blood Pressure": 100,
+      "Heart Rate": 68,
+      "Oxygen Saturation": 98
+    }
+  }
+
+Example 4: 
+Example input: 
+"Prior to transfer vitals were 89.2 70 153/76 25 97%ra. Physical Exam: VS T=94.7 BP=144/75-80 P=70s RR=16 SPO2=100"
+Expected output: {
+    "Admission": {
+      "Body Temperature": 94.7,
+      "Systolic Blood Pressure": 144,
+      "Diastolic Blood Pressure": [75, 80],
+      "Heart Rate": 70,
+      "Respiratory Rate": 16,
+      "Oxygen Saturation": 100
+    },
+    "Transfer": {
+      "Body Temperature": 89.2,
+      "Systolic Blood Pressure": 153,
+      "Diastolic Blood Pressure": 76,
+      "Heart Rate": 70,
+      "Respiratory Rate": 25,
+      "Oxygen Saturation": 97
+    }
+  }
+
+Example 5:
+Example input:
+  "Pt initially evaluated in ED. Vitals: T: 101.3, HR: 110, BP: 138/88. On admission, noted to have BP 140/92, HR 105, RR 22, SpO2 96%. On the day of discharge, vitals were: Temp 98.9, HR: 78, BP 132/84, RR 16. “
+Expected output:
+{
+  "Emergency Department": {
+    "Body Temperature": 101.3,
+    "Systolic Blood Pressure": 138,
+    "Diastolic Blood Pressure": 88,
+    "Heart Rate": 110,
+  },
+  "Admission": {
+    "Systolic Blood Pressure": 140,
+    "Diastolic Blood Pressure": 92,
+    "Heart Rate": 105,
+    "Respiratory Rate": 22,
+    "Oxygen Saturation": 96
+  },
+  "Discharge": {
+    "Body Temperature": 98.9,
+    "Systolic Blood Pressure": 132,
+    "Diastolic Blood Pressure": 84,
+    "Heart Rate": 78,
+    "Respiratory Rate": 16
+  }
+}
+
+Return only a correct JSON output. Do not include any explanations, comments, or additional text.
+
+
+---------------------------
+SECOND PROMPT – FLAT JSON
+---------------------------
+
+You are a clinical information extraction assistant.
+
+Your task is to extract vital signs from a discharge summary clinical note, and assign each set of vitals to one of the following temporal contexts, if present:
+1.Emergency Department
+2.Admission
+3.Transfer
+4.Discharge
+5.Unknown (if the time is not clear)
+
+Vitals to extract:
+- Body Temperature
+- Systolic Blood Pressure
+- Diastolic Blood Pressure
+- Heart Rate
+- Respiratory Rate 
+- Oxygen Saturation
+
+Handling Ranges and Multiple Values:
+- If both a main value and a range are present (e.g., HR: 62 (62–81)), return only the main value (e.g. 62).
+- If only a range is available (e.g. O2 Sat: (87–99)), return the range in list with "min-max" format (e.g. [87, 99]).
+
+Output Format:
+Return a JSON object where each key is one of the section names above.
+Each section's value should be a dictionary of the extracted vital signs.
+Use the following key format for vital signs:
+- mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude
+- mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude
+- mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude
+- mimic-iv_to_openehr/vital_signs/heart_rate/any_event:{index}/rate|magnitude
+- mimic-iv_to_openehr/vital_signs/respiratory_rate/any_event:{index}/rate|magnitude
+- mimic-iv_to_openehr/vital_signs/oxygen_saturation/any_event:{index}/spo|numerator
+Include only the contexts and fields that appear in the note.
+Do not include any units, only return numeric values.
+Return only the JSON, no explanations or comments.
+If there are no vitals return {}
+
+Example 1:
+ Example input:
+  "Patient seen in ED. T: 98.6, HR: 75, BP: 124/66. RR: 16. O2 Sat: 94%. Discharge exam: HR: 80."
+Expected output:
+  {
+    "Emergency Department": {
+      "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 98.6,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 124,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 66,
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 75,
+      "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 16,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 94
+    },
+    "Discharge": {
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 80
+    }
+  }
+
+Example 2:
+Example input:
+  "On the floor, vitals notable for T:95.6 BP:175/82 P:71 R:18 O2:99RA. Physical Exam: VS T: 97.6 BP: 170-180/85 P: 60s RR: 20 SPO2: 100RA"
+Expected output:
+  {
+    "Admission": {
+      "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 97.6,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": [170, 180],
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 85,
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 60,
+      "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 20,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 100
+    },
+    "Unknown": {
+      " mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 95.6,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 175,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 82,
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 71,
+      "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 18,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 99
+    }
+  }
+
+Example 3:
+Example input:
+  "Physical Exam: ADMISSION PHYSICAL EXAM: Vitals: Tmax99.1 HR__ BP168/59 RR20 SPO2100%RA DISCHARGE PHYSICAL EXAM: Vitals: T98.0, HR68(68-78), BP184/100(165-184/76-100), 98%RA "
+Expected output:
+  {
+    "Admission": {
+      "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 99.1,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 168,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 59,
+      "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 20,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 100
+    },
+    "Discharge": {
+      "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 98.0,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 184,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 100,
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 68,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 98
+    }
+  }
+
+Example 4: 
+Example input:
+  "Prior to transfer vitals were 89.2 70 153/76 25 97%ra. Physical Exam: VS T=94.7 BP=144/75-80 P=70s RR=16 SPO2=100"
+Expected output: {
+    "Admission": {
+      "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 94.7,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 144,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": [75, 80],
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 70,
+      "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 16,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 100
+    },
+    "Transfer": {
+      "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 89.2,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 153,
+      "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 76,
+      "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 70,
+      "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 25,
+      "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 97
+    }
+  }
+
+Example 5:
+Example input:
+  "Pt initially evaluated in ED. Vitals: T: 101.3, HR: 110, BP: 138/88. On admission, noted to have BP 140/92, HR 105, RR 22, SpO2 96%. On the day of discharge, vitals were: Temp 98.9, HR: 78, BP 132/84, RR 16. “
+Expected output:
+{
+  "Emergency Department": {
+    "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 101.3,
+     "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude":138,
+    "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 88,
+    "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 110,
+  },
+  "Admission": {
+     "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 140,
+    "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 92,
+    "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 105,
+    "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 22,
+    "mimic-iv_to_openehr/vital_signs/pulse_oximetry/any_event:{index}/spo|numerator": 96
+  },
+  "Discharge": {
+    "mimic-iv_to_openehr/vital_signs/body_temperature/any_event:{index}/temperature|magnitude": 98.9,
+     "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/systolic|magnitude": 132,
+     "mimic-iv_to_openehr/vital_signs/blood_pressure/any_event:{index}/diastolic|magnitude": 84,
+    "mimic-iv_to_openehr/vital_signs/pulse_heart_beat/any_event:{index}/rate|magnitude": 78,
+    "mimic-iv_to_openehr/vital_signs/respiration/any_event:{index}/rate|magnitude": 16
+  }
+}
+
+Return only a correct JSON output. Do not include any explanations, comments, or additional text.
+

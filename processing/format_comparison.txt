@@ -1,0 +1,69 @@
+ XML
+'''''
+<observation class="OBSERVATION">
+  <name>
+    <value>Body temperature</value>
+  </name>
+  <data>
+    <event>
+      <time>
+        <value>2023-01-01T12:00:00Z</value>
+      </time>
+      <data>
+        <item>
+          <name>
+            <value>Temperature</value>
+          </name>
+          <value magnitude="38.2" units="°C"/>
+        </item>
+      </data>
+    </event>
+  </data>
+</observation>
+
+
+ JSON
+'''''''
+{
+  "_type": "OBSERVATION",
+  "name": { "value": "Body temperature" },
+  "data": {
+    "events": [{
+      "time": { "value": "2023-01-01T12:00:00Z" },
+      "data": {
+        "items": [{
+          "name": { "value": "Temperature" },
+          "value": { "magnitude": 38.2, "units": "°C" }
+        }]
+      }
+    }]
+  }
+}
+
+
+ FLAT
+'''''''
+{
+    "ctx/language": "en",
+    "ctx/territory": "ES",
+    "ctx/composer_name": "Dr. Smith",
+    "vital_signs/body_temperature:0/any_event:0/temperature|magnitude": 38.2,
+    "vital_signs/body_temperature:0/any_event:0/temperature|unit": "°C",
+    "vital_signs/body_temperature:0/any_event:0/time": "2023-01-01T12:00:00Z"
+}
+
+ 
+ STRUCTURED
+''''''''''''
+{
+    "vital_signs": {
+        "body_temperature": [{
+        "time": "2023-01-01T12:00:00Z",
+        "temperature": {
+            "magnitude": 38.2,
+            "unit": "°C"
+        }
+        }]
+    }
+}
+  

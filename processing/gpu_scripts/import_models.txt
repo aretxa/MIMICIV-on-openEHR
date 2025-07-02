@@ -1,0 +1,4 @@
+huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct   --local-dir Meta-Llama-3.1-8B-Instruct
+huggingface-cli download deepseek-ai/deepseek-llm-7b-chat   --local-dir deepseek-llm-7b-chat
+huggingface-cli download OpenMeditron/Meditron3-8B   --local-dir Meditron3-8B
+huggingface-cli download deepseek-ai/deepseek-llm-7b-chat   --revision 3ae070a --local-dir deepseek-llm-7b-chat-safetensors 

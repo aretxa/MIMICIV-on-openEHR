@@ -1,0 +1,92 @@
+#------------------------------------------------------------
+#  I had to unzip all the files of MIMIC database and used this code for that
+#  
+#  Run the following code in Windows powershell
+#  Change the paths to your own paths
+#  This is an example to unzip mimic-iv-note-2.2 and mimic-iv-3.1
+#
+#  The following code creates a "Extracted" folder and uncompresses all the csv.gz files into the folder
+#-----------------------------------------------------------
+
+# note module
+
+# Look if there are .csv.gz files in that folder
+Get-ChildItem -Path "P:\Asier\MIMIC-to-OpenEHR\MIMIC\mimic-iv-note-2.2\note" -Filter "*.csv.gz"
+
+$sourceFolder = "P:\Asier\MIMIC-to-OpenEHR\MIMIC\mimic-iv-note-2.2\note"  # Path to your folder
+$destinationFolder = "P:\Asier\MIMIC-to-OpenEHR\MIMIC\mimic-iv-note-2.2\note\extracted"  # Path where you want to extract the files
+
+# Create the destination folder if it doesn't exist
+if (-not (Test-Path -Path $destinationFolder)) {
+    New-Item -ItemType Directory -Path $destinationFolder
+}
+
+# Get all .csv.gz files in the folder
+$gzFiles = Get-ChildItem -Path $sourceFolder -Filter '*.csv.gz'
+
+if ($gzFiles.Count -eq 0) {
+    Write-Host "No .csv.gz files found in the folder."
+} else {
+    foreach ($gzFile in $gzFiles) {
+        Write-Host "Decompressing file: $($gzFile.Name)"
+        
+        # Define the destination path for the decompressed file
+        $outputFile = Join-Path $destinationFolder ($gzFile.BaseName)  # Use the filename without .gz
+
+        # Create a GzipStream to decompress the file
+        $gzipStream = [System.IO.Compression.GzipStream]::new(
+            [System.IO.File]::OpenRead($gzFile.FullName), [System.IO.Compression.CompressionMode]::Decompress)
+        $outputFileStream = [System.IO.File]::Create($outputFile)
+
+        # Copy the decompressed data to the output file
+        $gzipStream.CopyTo($outputFileStream)
+
+        # Close the streams
+        $gzipStream.Close()
+        $outputFileStream.Close()
+        
+        Write-Host "Decompression completed for: $($gzFile.Name)"
+    }
+}
+
+
+# hosp module
+
+# Look if there are .csv.gz files in that folder
+Get-ChildItem -Path "P:\Asier\MIMIC-to-OpenEHR\MIMIC\mimic-iv-3.1\hosp" -Filter "*.csv.gz"
+
+$sourceFolder = "P:\Asier\MIMIC-to-OpenEHR\MIMIC\mimic-iv-3.1\hosp"  # Path to your folder
+$destinationFolder = "P:\Asier\MIMIC-to-OpenEHR\MIMIC\mimic-iv-3.1\hosp\extracted"  # Path where you want to extract the files
+
+# Create the destination folder if it doesn't exist
+if (-not (Test-Path -Path $destinationFolder)) {
+    New-Item -ItemType Directory -Path $destinationFolder
+}
+
+# Get all .csv.gz files in the folder
+$gzFiles = Get-ChildItem -Path $sourceFolder -Filter '*.csv.gz'
+
+if ($gzFiles.Count -eq 0) {
+    Write-Host "No .csv.gz files found in the folder."
+} else {
+    foreach ($gzFile in $gzFiles) {
+        Write-Host "Decompressing file: $($gzFile.Name)"
+        
+        # Define the destination path for the decompressed file
+        $outputFile = Join-Path $destinationFolder ($gzFile.BaseName)  # Use the filename without .gz
+
+        # Create a GzipStream to decompress the file
+        $gzipStream = [System.IO.Compression.GzipStream]::new(
+            [System.IO.File]::OpenRead($gzFile.FullName), [System.IO.Compression.CompressionMode]::Decompress)
+        $outputFileStream = [System.IO.File]::Create($outputFile)
+
+        # Copy the decompressed data to the output file
+        $gzipStream.CopyTo($outputFileStream)
+
+        # Close the streams
+        $gzipStream.Close()
+        $outputFileStream.Close()
+        
+        Write-Host "Decompression completed for: $($gzFile.Name)"
+    }
+}

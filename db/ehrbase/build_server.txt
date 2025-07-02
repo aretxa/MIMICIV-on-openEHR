@@ -1,0 +1,42 @@
+--------
+Summary
+--------
+This guide provides step-by-step instructions to initialize and run the EHRbase server locally. It involves resetting the PostgreSQL database, building the EHRbase application using Maven (while skipping the jooq-pg module and tests), launching the server, and verifying its operation through the browser. Additionally, it includes instructions for loading OPT templates into Swagger UI without the need for Postman or other REST clients.
+
+-----
+Steps
+-----
+
+1. Dowload the EHRbase repository from GitHub
+
+
+2. In the SQL Shell, create the schema
+
+DROP DATABASE IF EXISTS ehrbase;
+CREATE DATABASE ehrbase OWNER postgres;
+\c ehrbase;
+set search_path to ehrbase;
+\i P:/Asier/ehrbase-develop/ehrbase-develop/createdb.sql; -- the path must be where the EHRbase repository was dowloaded
+
+
+3. In Command Prompt (CMD)
+
+-- Navigate to the EHRbase source directory
+P:
+cd P:/Asier/ehrbase-develop/ehrbase-develop 
+
+-- Clean and install the application (I ignored the part that neede Docker and skiped test to make it faster)
+mvn clean
+mvn install -pl !jooq-pg -DskipTests
+
+-- Launch the EHRbase application
+java -jar application\target\ehrbase.jar 
+
+
+4. In browser to see if the previous steps worked
+
+http://localhost:8080/ehrbase/
+
+As i dont have postman or similar application in the university computer I have used swagger UI to load the template. I opened the OPT file with notepad and copied the text, then i loaded to ADL 1.4 template in the Swagger ui index:
+http://localhost:8080/ehrbase/swagger-ui/index.html#
+

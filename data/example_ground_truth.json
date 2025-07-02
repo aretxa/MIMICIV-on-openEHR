@@ -1,0 +1,44 @@
+[
+    {
+        "note_number": 1,
+        "note_id": "1111111111",
+        "subject_id": 1111111111,
+        "hadm_id": 1111111111,
+        "note_fragment": "History of Present Illness: <<Information regarding the history of the present illness>> \n\n---------------------------\n\nPhysical Exam:<<Information regarding the Physical examination>> ",
+        "chief_complaint": "Example of chief complaint",
+        "extracted_data": {
+            "Emergency Department": {
+                "Body Temperature": null,
+                "Systolic Blood Pressure": null,
+                "Diastolic Blood Pressure": null,
+                "Heart Rate": null,
+                "Respiratory Rate": null,
+                "Oxygen Saturation": null
+            },
+            "Transfer": {
+                "Body Temperature": null,
+                "Systolic Blood Pressure": null,
+                "Diastolic Blood Pressure": null,
+                "Heart Rate": null,
+                "Respiratory Rate": null,
+                "Oxygen Saturation": null
+            },
+            "Admission": {
+                "Body Temperature": null,
+                "Systolic Blood Pressure": null,
+                "Diastolic Blood Pressure": null,
+                "Heart Rate": null,
+                "Respiratory Rate": null,
+                "Oxygen Saturation": null
+            },
+            "Discharge": {
+                "Body Temperature": null,
+                "Systolic Blood Pressure": null,
+                "Diastolic Blood Pressure": null,
+                "Heart Rate": null,
+                "Respiratory Rate": null,
+                "Oxygen Saturation": null
+            }
+        }
+    }
+]

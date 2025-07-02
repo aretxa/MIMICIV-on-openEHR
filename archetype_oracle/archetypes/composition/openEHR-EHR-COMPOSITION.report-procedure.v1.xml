@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <original_language>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+    <code_string>en</code_string>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="date">2012-12-10</original_author>
+    <original_author id="name">Heather Leslie</original_author>
+    <original_author id="organisation">Ocean Informatics</original_author>
+    <original_author id="email">heather.leslie@oceaninformatics.com</original_author>
+    <other_contributors>Vebjoern Arntzen, Oslo university hospital, Norway</other_contributors>
+    <other_contributors>Silje Ljosland Bakke, Bergen Hospital Trust, Norway (openEHR Editor)</other_contributors>
+    <other_contributors>Sistine Barretto-Daniels, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Lars Bitsch-Larsen, Haukeland University hospital, Norway</other_contributors>
+    <other_contributors>Heath Frankel, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Heather Grain, Llewelyn Grain Informatics, Australia</other_contributors>
+    <other_contributors>Sam Heard, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Lars Karlsen, DIPS ASA, Norway</other_contributors>
+    <other_contributors>Sabine Leh, Haukeland University Hospital, Department of Pathology, Norway</other_contributors>
+    <other_contributors>Heather Leslie, Ocean Informatics, Australia (openEHR Editor)</other_contributors>
+    <other_contributors>Hugh Leslie, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)</other_contributors>
+    <other_contributors>Andrej Orel, Marand d.o.o., Slovenia</other_contributors>
+    <other_contributors>Jussara Rotzsch, UNB, Brazil</other_contributors>
+    <lifecycle_state>published</lifecycle_state>
+    <other_details id="licence">This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.</other_details>
+    <other_details id="custodian_organisation">openEHR Foundation</other_details>
+    <other_details id="current_contact">Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com</other_details>
+    <other_details id="original_namespace">org.openehr</other_details>
+    <other_details id="original_publisher">openEHR Foundation</other_details>
+    <other_details id="custodian_namespace">org.openehr</other_details>
+    <other_details id="MD5-CAM-1.0.1">2A789520F48E91960C4825733C8BA68F</other_details>
+    <other_details id="build_uid">97c014c4-b3c3-461c-821f-0f387ec9ea43</other_details>
+    <other_details id="revision">1.0.2</other_details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>de</code_string>
+      </language>
+      <purpose>Ein generischer Container-Archetyp zur Speicherung von Informationen über jede eigenständige Prozedur oder durchgeführte Operation.</purpose>
+      <keywords>Bericht</keywords>
+      <keywords>Prozedur</keywords>
+      <keywords>Operation</keywords>
+      <keywords>Verfahren</keywords>
+      <keywords>Ablauf</keywords>
+      <keywords>Vorgang</keywords>
+      <use>Diesen Archetypen als generischer verfahrensbezogener Archetyp verwenden, um Informationen über jedes eigenständige Verfahren oder jede durchgeführte Operation aufzuzeichnen.&#xD;
+&#xD;
+Voraussichtlich wird jeder Archetyp des COMPOSITION.Bericht-Prozedur mindestens ein ACTION.Prozedur (oder ein verwandter Archetyp) beinhalten. Je nach Komplexität des Verfahrens kann es eine Vielzahl anderer Archetypen enthalten. Zum Beispiel Archetypen zur Darstellung der damit verbundenen Anästhesie- oder Bildgebungsaktivitäten, die während des Eingriffs durchgeführt wurden.&#xD;
+&#xD;
+Häufige Anwendungsfälle sind: &#xD;
+- jedes Verfahren, das nicht als Teil einer Konsultation aufgezeichnet wird, sondern als eigenständige Aktivität durchgeführt werden muss; &#xD;
+- Endoskopie-Bericht; bis hin zu einem &#xD;
+- vollständiger Operationsbericht für eine Laparatomie oder einen Gelenkersatz.&#xD;
+&#xD;
+Die Erfassung des Anästhetikums, das zur Abdeckung des Eingriffs verwendet wurde, wird anhand von zweckgebundenen Archetypen dokumentiert. Sie können gleichzeitig mit dem Verfahrensbericht in die Gesundheitsakte aufgenommen werden und zwar höchstwahrscheinlich auf eine von zwei Arten:&#xD;
+- in einem separaten Anästhesiebericht. Dies gilt am ehesten, wenn die Anästhesie von einem anderen Arzt als dem ausführenden Arzt verabreicht wurde; oder&#xD;
+- im gleichen Prozedurenbericht wie die Prozedur aufgezeichnet wurde. Dies gilt am ehesten, wenn die Narkose von demselben Arzt verabreicht wurde, der den Eingriff durchgeführt hat.&#xD;
+&#xD;
+Die Sections-Komponente wurde bewusst frei gelassen, um die Wiederverwendung dieses Archetyps zu optimieren.</use>
+      <misuse>Nicht für Berichte zu verwenden, die nicht mit einem Verfahren in Zusammenhang stehen. Hierfür verwenden Sie den generischen COMPOSITION.Bericht oder ggf. zweckgebundene COMPOSITIONs.&#xD;
+&#xD;
+Nicht für Prozeduren zu verwenden, die als Teil eines Konsultationsvermerks aufgezeichnet werden, z.B. die Entfernung einer Hautläsion in einer Erstversorgungsberatung. Hierfür verwenden Sie einen ACTION.Prozedur Archetyp innerhalb des COMPOSITION.Kontakt.&#xD;
+&#xD;
+Nicht für Prozeduren zu verwenden, die als Teil einer Pflegefortschrittsanzeige dokumentiert werden, z. B. Einführen eines Katheters. Hierfür verwenden Sie einen ACTION.</misuse>
+      <copyright />
+    </details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>nb</code_string>
+      </language>
+      <purpose>En generisk COMPOSITION-arketype for å lagre informasjon om enkeltstående prosedyrer eller operasjoner som er gjennomført.</purpose>
+      <keywords>rapport</keywords>
+      <keywords>prosedyre</keywords>
+      <keywords>operasjon</keywords>
+      <keywords>anestesirapport</keywords>
+      <keywords>operasjonsbeskrivelse</keywords>
+      <keywords>operasjonsprotokoll</keywords>
+      <keywords>prosedyrebeskrivelse</keywords>
+      <use>En generisk container-arketype for å lagre informasjon om enkeltstående prosedyrer eller operasjoner som er gjennomført.&#xD;
+&#xD;
+Det forventes at hver enkelt COMPOSTION.report_procedure inneholder minst en ACTION.procedure (eller beslektet arketype), men den kan også inneholde en stor variasjon av andre arketyper avhengig av kompleksiteten av prosedyren som er gjennomført. For eksempel: arketyper som omhandler aktiviteter knyttet til anestesi eller radiologi gjennomført under prosedyren.&#xD;
+&#xD;
+Vanlige bruksområder: &#xD;
+- Rapport etter prosedyrer som utføres som selvstendige aktiviteter, og som ikke inngår i en ordinær konsultasjon.&#xD;
+- Alt fra en endoskopirapport til en komplett operasjonsbekrivelse for en laparatomi eller utskifting av et hofteledd.&#xD;
+&#xD;
+Innholdet i arketypen er bevisst ubegrenset, slik at alle SECTION- og/eller ENTRY-arketyper som er nødvendig/hensiktsmessig i den aktuelle kliniske konteksten kan brukes i templaten.&#xD;
+&#xD;
+&#xD;
+</use>
+      <misuse>Brukes ikke for å dokumentere rapporter som ikke er relatert til en prosedyre. Bruk den generiske COMPOSTION.report eller en spesfikk COMPOSITON-arketype for dette formålet.&#xD;
+&#xD;
+Brukes ikke for prosedyrer som er dokumentert som del av et konsultasjonsnotat. For eksempel fjerning av en hudlesjon under en konsultasjon i primærhelsetjenesten. Bruk arketypen ACTION.procedure i arketypen COMPOSITION.encouter for dette formålet.&#xD;
+&#xD;
+Brukes ikke for å registrere prosedyrer som er en del av et sykepleienotat, for eksempel innleggelse av urinkateter. Bruk ACTION.procedure i arketypen COMPOSTION.progess_note for dette formålet.</misuse>
+      <copyright />
+    </details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>pt-br</code_string>
+      </language>
+      <purpose>Arquétipo genérico para carregar informações sobre procedimentos isolados ou cirurgia realizada.</purpose>
+      <keywords>relatório</keywords>
+      <keywords>procedimento</keywords>
+      <keywords>cirurgia</keywords>
+      <keywords>operação</keywords>
+      <use>Use como um arquétipo relacionado com o procedimento genérico para levar informações sobre qualquer procedimento isolado ou operação realizada.&#xD;
+&#xD;
+Prevê-se que cada arquétipo-COMPOSITION.report procedimento irá conter, pelo menos, um ACTION.procedure (ou arquétipo relacionados) mas, dependendo da complexidade do processo pode incluir uma variedade de outros arquétipos, dependendo da natureza e complexidade do procedimento executado . Por exemplo, os arquétipos para descrever as atividades anestésicas ou de imagem associadas realizadas durante o procedimento.&#xD;
+&#xD;
+Casos de uso comuns:&#xD;
+- Qualquer procedimento que não é registrado como parte de uma consulta, mas precisa ser registrado como uma atividade isolada realizada;&#xD;
+- Relatório Endoscopia; através de um&#xD;
+- Completar Relatório de Cirurgia para uma laparotomia ou substituição da articulação.&#xD;
+&#xD;
+Gravação do anestésico usado em um procedimento será gravado utilizando arquétipos de propósito específico. Eles podem ser acrescentados ao registro de saúde, ao mesmo tempo que o relatório do procedimento, provavelmente em uma de duas maneiras:&#xD;
+- Em um relatório de anestesia separado. Isto é o mais provável, se o anestésico é administrado por um médico diferente que realiza o procedimento; ou&#xD;
+- No mesmo relatório do procedimento gravado. Isto é o mais provável, se o anestésico foi administrado pelo mesmo médico que realizou o procedimento.&#xD;
+&#xD;
+O componente Section foi deliberadamente deixado sem restrições para maximizar a reutilização deste arquétipo</use>
+      <misuse>Não deve ser usado para relatórios que não estão relacionados a um procedimento. Use o arquétipo genérico COMPOSITION.report ou composições específicas de uso, conforme apropriado.&#xD;
+&#xD;
+Não deve ser utilizado para procedimentos que são gravadas como parte de uma nota de consulta, por exemplo, a remoção de uma lesão de pele em uma consulta na assistência básica - usar um arquétipo ACTION.procedure dentro do COMPOSITION.encouter para esta finalidade.&#xD;
+&#xD;
+Não deve ser utilizado para procedimentos que são gravadas como parte de uma nota progresso de enfermagem, por exemplo a inserção de um catéter - usar um arquétipo ACTION.procedure dentro do COMPOSITION.progress_note.</misuse>
+      <copyright />
+    </details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>en</code_string>
+      </language>
+      <purpose>Generic container archetype to carry information about any stand-alone procedure or operation performed.</purpose>
+      <keywords>report</keywords>
+      <keywords>procedure</keywords>
+      <keywords>operation</keywords>
+      <use>Use as a generic procedure-related archetype to carry information about any stand-alone procedure or operation performed. &#xD;
+&#xD;
+It is anticipated that each COMPOSITION.report-procedure archetype will contain at least one ACTION.procedure (or related archetype) but depending on the complexity of the procedure it may contain a variety of other archetypes depending on the nature and complexity of the procedure performed. For example, archetypes to describe the associated anaesthetic or imaging activities carried out during the procedure.&#xD;
+&#xD;
+Common use cases are: &#xD;
+- any procedure that is not recorded as part of a consultation but needs to be carried out recorded as a stand-alone activity; &#xD;
+- Endoscopy Report; through to a &#xD;
+- complete Operation Report for an laparotomy or joint replacement.&#xD;
+&#xD;
+Record of the anaesthetic used to cover the procedure will be recorded using purpose-specific archetypes. They can be committed to the health record at the same time as the Procedure report, most likely in one of two ways:&#xD;
+- in a separate Anaesthetic report. This is most likely if the anaesthetic is administered by a separate clinician to the one performing the procedure; or&#xD;
+- in the same Procedure report as the procedure is recorded. This is most likely if the anaesthetic was administered by the same clinician who performed the procedure.&#xD;
+&#xD;
+The Sections component has been deliberately left unconstrained to maximise re-use of this archetype.</use>
+      <misuse>Not to be used for reports that are not related to a procedure. Use the generic COMPOSITION.report or purpose specific COMPOSITIONs as appropriate.&#xD;
+&#xD;
+Not to be used for procedures that are recorded as part of a consultation note, for example removal of a skin lesion in a primary care consultation - use a ACTION.procedure archetype inside the COMPOSITION.encouter for this purpose.&#xD;
+&#xD;
+Not to be used for procedures that are recorded as part of a nursing progress note, for example insertion of a catheter - use an ACTION.procedure archetype inside the COMPOSITION.progress_note.</misuse>
+      <copyright>© openEHR Foundation</copyright>
+    </details>
+  </description>
+  <translations>
+    <language>
+      <terminology_id>
+        <value>ISO_639-1</value>
+      </terminology_id>
+      <code_string>de</code_string>
+    </language>
+    <author id="name">Sarah Ballout</author>
+    <author id="organisation">MHH-Hannover</author>
+    <author id="email">ballout.sarah@mh-hannover.de</author>
+  </translations>
+  <translations>
+    <language>
+      <terminology_id>
+        <value>ISO_639-1</value>
+      </terminology_id>
+      <code_string>nb</code_string>
+    </language>
+    <author id="name">Vebjørn Arntzen; John Tore Valand</author>
+    <author id="organisation">Oslo univeristetsykehus HF; Helse Bergen HF</author>
+  </translations>
+  <translations>
+    <language>
+      <terminology_id>
+        <value>ISO_639-1</value>
+      </terminology_id>
+      <code_string>pt-br</code_string>
+    </language>
+    <author id="name">Osmeire Chamelette Sanzovo</author>
+    <author id="organisation">Hospital Sírio Libanês - SP</author>
+    <author id="email">osmeire.acsanzovo@hsl.org.br</author>
+  </translations>
+  <uid>
+    <value>a8d1333d-63ef-4db0-958f-62643d0fa6c5</value>
+  </uid>
+  <archetype_id>
+    <value>openEHR-EHR-COMPOSITION.report-procedure.v1</value>
+  </archetype_id>
+  <adl_version>1.4</adl_version>
+  <concept>at0000.1</concept>
+  <parent_archetype_id>
+    <value>openEHR-EHR-COMPOSITION.report.v1</value>
+  </parent_archetype_id>
+  <definition>
+    <rm_type_name>COMPOSITION</rm_type_name>
+    <occurrences>
+      <lower_included>true</lower_included>
+      <upper_included>true</upper_included>
+      <lower_unbounded>false</lower_unbounded>
+      <upper_unbounded>false</upper_unbounded>
+      <lower>1</lower>
+      <upper>1</upper>
+    </occurrences>
+    <node_id>at0000.1</node_id>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <rm_attribute_name>category</rm_attribute_name>
+      <existence>
+        <lower_included>true</lower_included>
+        <upper_included>true</upper_included>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>0</lower>
+        <upper>1</upper>
+      </existence>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>DV_CODED_TEXT</rm_type_name>
+        <occurrences>
+          <lower_included>true</lower_included>
+          <upper_included>true</upper_included>
+          <lower_unbounded>false</lower_unbounded>
+          <upper_unbounded>false</upper_unbounded>
+          <lower>1</lower>
+          <upper>1</upper>
+        </occurrences>
+        <node_id />
+        <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+          <rm_attribute_name>defining_code</rm_attribute_name>
+          <existence>
+            <lower_included>true</lower_included>
+            <upper_included>true</upper_included>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>0</lower>
+            <upper>1</upper>
+          </existence>
+          <children xsi:type="C_CODE_PHRASE">
+            <rm_type_name>CODE_PHRASE</rm_type_name>
+            <occurrences>
+              <lower_included>true</lower_included>
+              <upper_included>true</upper_included>
+              <lower_unbounded>false</lower_unbounded>
+              <upper_unbounded>false</upper_unbounded>
+              <lower>1</lower>
+              <upper>1</upper>
+            </occurrences>
+            <node_id />
+            <terminology_id>
+              <value>openehr</value>
+            </terminology_id>
+            <code_list>433</code_list>
+          </children>
+        </attributes>
+      </children>
+    </attributes>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <rm_attribute_name>context</rm_attribute_name>
+      <existence>
+        <lower_included>true</lower_included>
+        <upper_included>true</upper_included>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>0</lower>
+        <upper>1</upper>
+      </existence>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>EVENT_CONTEXT</rm_type_name>
+        <occurrences>
+          <lower_included>true</lower_included>
+          <upper_included>true</upper_included>
+          <lower_unbounded>false</lower_unbounded>
+          <upper_unbounded>false</upper_unbounded>
+          <lower>1</lower>
+          <upper>1</upper>
+        </occurrences>
+        <node_id />
+        <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+          <rm_attribute_name>other_context</rm_attribute_name>
+          <existence>
+            <lower_included>true</lower_included>
+            <upper_included>true</upper_included>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>0</lower>
+            <upper>1</upper>
+          </existence>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ITEM_TREE</rm_type_name>
+            <occurrences>
+              <lower_included>true</lower_included>
+              <upper_included>true</upper_included>
+              <lower_unbounded>false</lower_unbounded>
+              <upper_unbounded>false</upper_unbounded>
+              <lower>1</lower>
+              <upper>1</upper>
+            </occurrences>
+            <node_id>at0001</node_id>
+            <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+              <rm_attribute_name>items</rm_attribute_name>
+              <existence>
+                <lower_included>true</lower_included>
+                <upper_included>true</upper_included>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>0</lower>
+                <upper>1</upper>
+              </existence>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ELEMENT</rm_type_name>
+                <occurrences>
+                  <lower_included>true</lower_included>
+                  <upper_included>true</upper_included>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower>0</lower>
+                  <upper>1</upper>
+                </occurrences>
+                <node_id>at0002</node_id>
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <rm_attribute_name>value</rm_attribute_name>
+                  <existence>
+                    <lower_included>true</lower_included>
+                    <upper_included>true</upper_included>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>0</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>DV_TEXT</rm_type_name>
+                    <occurrences>
+                      <lower_included>true</lower_included>
+                      <upper_included>true</upper_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower>1</lower>
+                      <upper>1</upper>
+                    </occurrences>
+                    <node_id />
+                  </children>
+                </attributes>
+              </children>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ELEMENT</rm_type_name>
+                <occurrences>
+                  <lower_included>true</lower_included>
+                  <upper_included>true</upper_included>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower>0</lower>
+                  <upper>1</upper>
+                </occurrences>
+                <node_id>at0005</node_id>
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <rm_attribute_name>value</rm_attribute_name>
+                  <existence>
+                    <lower_included>true</lower_included>
+                    <upper_included>true</upper_included>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>0</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>DV_TEXT</rm_type_name>
+                    <occurrences>
+                      <lower_included>true</lower_included>
+                      <upper_included>true</upper_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower>1</lower>
+                      <upper>1</upper>
+                    </occurrences>
+                    <node_id />
+                  </children>
+                </attributes>
+              </children>
+              <children xsi:type="ARCHETYPE_SLOT">
+                <rm_type_name>CLUSTER</rm_type_name>
+                <occurrences>
+                  <lower_included>true</lower_included>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper_unbounded>true</upper_unbounded>
+                  <lower>0</lower>
+                </occurrences>
+                <node_id>at0006</node_id>
+                <includes>
+                  <string_expression>archetype_id/value matches {/.*/}</string_expression>
+                  <expression xsi:type="EXPR_BINARY_OPERATOR">
+                    <type>Boolean</type>
+                    <operator>2007</operator>
+                    <precedence_overridden>false</precedence_overridden>
+                    <left_operand xsi:type="EXPR_LEAF">
+                      <type>String</type>
+                      <item xsi:type="xsd:string">archetype_id/value</item>
+                      <reference_type>attribute</reference_type>
+                    </left_operand>
+                    <right_operand xsi:type="EXPR_LEAF">
+                      <type>C_STRING</type>
+                      <item xsi:type="C_STRING">
+                        <pattern>.*</pattern>
+                      </item>
+                      <reference_type>constraint</reference_type>
+                    </right_operand>
+                  </expression>
+                </includes>
+              </children>
+              <cardinality>
+                <is_ordered>false</is_ordered>
+                <is_unique>false</is_unique>
+                <interval>
+                  <lower_included>true</lower_included>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper_unbounded>true</upper_unbounded>
+                  <lower>0</lower>
+                </interval>
+              </cardinality>
+            </attributes>
+          </children>
+        </attributes>
+      </children>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">*Report(en)</items>
+        <items id="description">*Document to communicate information to others, commonly in response to a request from another party.(en)</items>
+      </items>
+      <items code="at0000.1">
+        <items id="text">Procedure report</items>
+        <items id="description">Document to communicate information to others about any stand-alone procedure or operation performed.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Report ID</items>
+        <items id="description">Identification information about the report.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Status</items>
+        <items id="description">The status of the entire report. Note: This is not the status of any of the report components.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Extension</items>
+        <items id="description">Additional information required to capture local context or to align with other reference models/formalisms.</items>
+        <items id="comment">For example: local information requirements or additional metadata to align with FHIR or CIMI equivalents.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="nb">
+      <items code="at0000">
+        <items id="text">Rapport</items>
+        <items id="description">Dokument som brukes for å kommunisere informasjon til andre, ofte som svar på en forespørsel.</items>
+      </items>
+      <items code="at0000.1">
+        <items id="text">Prosedyrerapport</items>
+        <items id="description">Dokument for å kommunisere informasjon om enkeltstående prosedyrer eller operasjoner som er utført.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Rapport ID</items>
+        <items id="description">Informasjon som identifiserer rapporten.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Status</items>
+        <items id="description">Status for hele rapporten. Merk: Dette er ikke statusen for noen av enkeltkomponentene i rapporten.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Tilleggsinformasjon</items>
+        <items id="description">Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.</items>
+        <items id="comment">For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR eller CIMI.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="pt-br">
+      <items code="at0000">
+        <items id="text">*Report(en)</items>
+        <items id="description">*Document to communicate information to others, commonly in response to a request from another party.(en)</items>
+      </items>
+      <items code="at0000.1">
+        <items id="text">Relatório do procedimento</items>
+        <items id="description">Documento para comunicar informações aos outros sobre qualquer procedimento isolado ou operação executada.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">ID Relatório</items>
+        <items id="description">Informações de identificação sobre um relatório.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Status</items>
+        <items id="description">O status de todo o relatório. Nota: Este não é o status de qualquer um dos componentes do relatório.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Extensão</items>
+        <items id="description">Informações adicionais necessárias para capturar o contexto local ou para alinhar com outras referências dos modelos / formalismos.</items>
+        <items id="comment">Por exemplo: requisitos de informação locais e metadados adicionais para alinhar com FHIR ou CIMI equivalentes.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="de">
+      <items code="at0000">
+        <items id="text">Bericht</items>
+        <items id="description">Ein Dokument, um Informationen an andere weiterzugeben, in der Regel als Antwort auf eine Anfrage einer anderen Partei.</items>
+      </items>
+      <items code="at0000.1">
+        <items id="text">Verfahrensbericht</items>
+        <items id="description">Ein Dokument, um Informationen über jedes eigenständige Verfahren oder jeden durchgeführten Vorgang zu übermitteln.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Berichts-ID</items>
+        <items id="description">Identifizierungsangaben über den Bericht.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Status</items>
+        <items id="description">Der Status des gesamten Berichts. Hinweis: Dies ist nicht der Status einer der Berichtskomponenten.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Erweiterung</items>
+        <items id="description">Zusätzliche Informationen die benötigt werden, um lokale Inhalte zu erfassen oder sich an andere Referenzmodelle/Formalismen auszupassen.</items>
+        <items id="comment">Comment: Zum Beispiel: lokaler Informationsbedarf oder zusätzliche Metadaten zum abstimmen mit FHIR oder CIMI Äquivalenten.</items>
+      </items>
+    </term_definitions>
+  </ontology>
+</archetype>
+

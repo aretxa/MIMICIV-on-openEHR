@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <original_language>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+    <code_string>en</code_string>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="date">2020-05-05</original_author>
+    <original_author id="name">Marit Alice Venheim</original_author>
+    <original_author id="organisation">Helse Vest IKT AS</original_author>
+    <original_author id="email">marit.alice.venheim@helse-vest-ikt-no</original_author>
+    <other_contributors>Heather Leslie, Atomica Informatics, Australia (openEHR Editor); Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)</other_contributors>
+    <lifecycle_state>in_development</lifecycle_state>
+    <other_details id="licence">This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.</other_details>
+    <other_details id="custodian_organisation">openEHR Foundation</other_details>
+    <other_details id="references">Note the similar approach in FHIR Pregnancy status Observation, but without the same semantics in terms of a clinician making an assertion:&#xD;
+ - AU Core Pregnancy Status, HL7 AU Core FHIR Profile [Internet]. Health Level Seven Australia; [cited: 2024 Oct 18]. Available from: https://hl7.org.au/fhir/core/0.1.0-draft/StructureDefinition-au-core-pregnancystatus.html.&#xD;
+ - Observation Pregnancy - Status (IPS) profile, International Patient Summary Implementation Guide, [Internet]. Patient Care Working Group, Health Level Seven International; [cited: 2024 Oct 18]. Available from: https://build.fhir.org/ig/HL7/fhir-ips/StructureDefinition-Observation-pregnancy-status-uv-ips.html</other_details>
+    <other_details id="original_namespace">org.openehr</other_details>
+    <other_details id="original_publisher">openEHR Foundation</other_details>
+    <other_details id="custodian_namespace">org.openehr</other_details>
+    <other_details id="MD5-CAM-1.0.1">04DB3ACCF005E496B0B9FD86C73867DA</other_details>
+    <other_details id="build_uid">796371b7-f919-4609-ba43-39ba6f628ffc</other_details>
+    <other_details id="ip_acknowledgements">This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org.</other_details>
+    <other_details id="revision">0.0.1-alpha</other_details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>de</code_string>
+      </language>
+      <purpose>Zur Aufzeichnung einer Aussage oder Feststellung über den Schwangerschaftsstatus einer Person, die nur zum Zeitpunkt der Feststellung als richtig anzusehen ist.</purpose>
+      <keywords>Schwangerschaft, schwanger, Ausschluss</keywords>
+      <use>Zur Aufzeichnung einer Aussage oder Feststellung über den Schwangerschaftsstatus einer Person zu einem bestimmten Zeitpunkt. &#xD;
+&#xD;
+Diese Datengruppe ist ganz bewusst als Aufzeichnung einer Behauptung definiert, einer sorgfältigen klinischen Aussage eines Arztes darüber, ob er nach bestem Wissen und Gewissen glaubt, dass eine Person schwanger ist oder nicht.&#xD;
+&#xD;
+"Möglicherweise schwanger“ wird in der Regel nicht als Wert angeboten, geschweige denn in der Krankenakte vermerkt, da dies die Standardannahme eines jeden Arztes für jede Frau im gebärfähigen Alter ist, bis das Gegenteil bewiesen ist. &#xD;
+&#xD;
+Die Feststellung, dass eine Person schwanger ist, lässt sich relativ einfach und sicher auf der Grundlage von Beweisen wie einem positiven Urin- oder Bluttest oder körperlichen Untersuchungsergebnissen treffen. In der Regel führen die Folgen eines Fehlers in diesem Szenario zu übervorsichtigen Behandlungsentscheidungen, die wahrscheinlich keinen klinischen Schaden verursachen. Die umgekehrte Situation, in der ein Arzt feststellen muss, dass eine Person, die bei der Geburt als weiblich eingestuft wurde, nicht schwanger ist, ist jedoch oft keine einfache oder sichere Entscheidung. Die fälschliche Feststellung, dass eine Person nicht schwanger ist, kann erhebliche klinische Folgen haben, wenn sie zu klinischen Behandlungsentscheidungen führt, die einer schwangeren Frau oder dem Fötus in einer nicht erkannten Schwangerschaft schaden können.&#xD;
+&#xD;
+Ein absoluter Ausschluss einer Schwangerschaft ist nur in begrenzten Fällen möglich, z. B. nach bestätigtem Fehlen oder Entfernung beider Eierstöcke und der Gebärmutter. In den meisten anderen Situationen kann der Arzt nur auf der Grundlage einer Kombination aus Anamnese, körperlicher Untersuchung, diagnostischen Tests und klinischem Urteil entscheiden, dass keine Schwangerschaft vorliegt. Jede Aussage zum Ausschluss einer Schwangerschaft sollte eine Begründung oder Rechtfertigung des Arztes enthalten, die sich auf aktuelle Testergebnisse, ein Organinventar oder eine Vorgeschichte von Diagnosen und Verfahren beziehen kann.&#xD;
+&#xD;
+Eine Feststellung sollte nur zum Zeitpunkt der Feststellung als richtig angesehen werden. So ist beispielsweise die Feststellung, eine Person sei schwanger, für die Diagnose einer Eileiterschwangerschaft erforderlich, obwohl sie nach einer Operation nicht mehr schwanger sein sollte. Ebenso muss eine Feststellung, dass eine Person nicht schwanger ist, die auf einer Anamnese und einem Urin-Schwangerschaftstest beruht, möglicherweise kurz darauf revidiert werden, wenn ein Bluttest auf Schwangerschaft positiv ausfällt.</use>
+      <misuse>Nicht für die Aufzeichnung zusammenfassender Informationen über eine einzelne Schwangerschaft zu verwenden. Verwenden Sie zu diesem Zweck den Archetyp EVALUATION.pregnancy_summary.&#xD;
+&#xD;
+Nicht zur Aufzeichnung der Phase einer aktiven Schwangerschaft, wie z. B. vor der Empfängnis, schwanger oder nach der Geburt, zu verwenden. Verwenden Sie zu diesem Zweck den Archetyp EVALUATION.pregnancy_phase.&#xD;
+&#xD;
+Nicht zur Erfassung von Details zu Eingriffen während einer Schwangerschaft, z. B. Schwangerschaftsabbrüche oder Entbindungen, zu verwenden. Verwenden Sie zu diesem Zweck den Archetyp ACTION.procedure oder andere relevante Archetypen.&#xD;
+&#xD;
+Nicht zu verwenden im Zusammenhang mit fragebogenartigen Darstellungen, wie z. B. Selbstauskünften mit Fragen wie „Sind Sie schwanger?“. Verwenden Sie hierfür den openEHR-EHR-OBSERVATION.problem_screening.v1 oder andere entsprechende Archetypen.</misuse>
+      <copyright />
+    </details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>nb</code_string>
+      </language>
+      <purpose>Å registrere et utsagn om graviditetsstatusen til en person, som kun skal anses som nøyaktig på datoen og tidspunktet for utsagnet.</purpose>
+      <keywords>graviditet, gravid, ekskludering, utelukkelse</keywords>
+      <use>Brukes til å registrere et utsagn om graviditetsstatusen til individet på et bestemt tidspunkt.&#xD;
+&#xD;
+Denne typen data er spesifikt definert som registrering av et utsagn, en nøye klinisk uttalelse fra en kliniker om hvorvidt de tror, ​​basert på deres beste kunnskap, at en person er gravid eller ikke gravid.&#xD;
+&#xD;
+"Kan være gravid" tilbys vanligvis ikke som en verdi, langt mindre registrert i helsejournalen, da dette er en klinikers antakelse for enhver kvinne i fertil alder, inntil det motsatte er bevist.&#xD;
+&#xD;
+Å hevde at en person er gravid er relativt enkelt og trygt å gjøre på grunnlag av bevis som en positiv urin- eller blodprøve eller fysiske undersøkelse. Vanligvis fører konsekvensene av en feil i dette scenariet til svært forsiktige behandlingsvalg, som neppe vil forårsake klinisk skade. Imidlertid er den motsatte situasjonen hvor en kliniker trenger å hevde at en person som ble født som kvinne ikke er gravid, ofte ikke er en enkel eller sikker avgjørelse. Feil utsagn om at individet ikke er gravid kan ha betydelige kliniske konsekvenser dersom det resulterer i kliniske valg som kan skade en gravid kvinne eller fosteret i et ukjent svangerskap.&#xD;
+&#xD;
+Absolutt utelukkelse av graviditet er bare mulig i begrensede tilfeller, for eksempel etter bekreftet fjerning av både eggstokkene og livmoren. I de fleste andre situasjoner kan klinikere bare ta en avgjørelse om "ikke gravid" basert på en kombinasjon av anamnese, fysisk undersøkelse, diagnostisk testing og klinisk vurdering. Enhver erklæring om utelukkelse av graviditet bør inkludere klinikerens begrunnelse, som kan referere til samtidige testresultater, manglende organ eller en tidligere historie med diagnoser og prosedyrer.&#xD;
+&#xD;
+Et utsagn bør kun anses som nøyaktig på tidspunktet for utsagnet. For eksempel er et utsagn om at en person er gravid nødvendig for å diagnostisere en graviditet utenfor livmoren, men personen bør ikke lenger være gravide etter en operasjon. På samme måte kan et utsagn om at en person ikke er gravid, basert på anamnese og et uringraviditetstestresultat, måtte revideres kort tid etter hvis en blodprøve for graviditet returnerer positiv.</use>
+      <misuse>Skal ikke brukes til å registrere sammendrag om en enkelt graviditet. Bruk arketypen EVALUATION.pregnancy_summary til dette formålet.&#xD;
+&#xD;
+Skal ikke brukes til å registrere fasen av en graviditet, slik som før unnfangelsen, graviditeten eller etter fødselen. Bruk arketypen EVALUATION.pregnancy_phase til dette formålet.&#xD;
+&#xD;
+Skal ikke brukes til å registrere detaljer om prosedyrer utført under en graviditet, for eksempel avbrudd eller fødsel. Bruk ACTION.prosedyren eller andre relevante arketyper for dette formålet.&#xD;
+&#xD;
+Skal ikke brukes i sammenheng med spørreskjema for eksempel selvrapporterte data med spørsmål som "Er du gravid?". Bruk openEHR-EHR-OBSERVATION.problem_screening.v1 eller andre relevante arketyper for dette formålet.</misuse>
+      <copyright />
+    </details>
+    <details>
+      <language>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>en</code_string>
+      </language>
+      <purpose>To record a statement or declaration about the pregnancy status of the individual, which is to be considered accurate only at the date and time of assertion.</purpose>
+      <keywords>pregnancy, pregnant, exclusion,</keywords>
+      <use>Use to record a statement or declaration about the pregnancy status of the individual at a specific point in time. &#xD;
+&#xD;
+This data group is very deliberately defined as the recording of an assertion, a careful clinical statement made by a clinician about whether they believe, based on their best knowledge, that an individual is pregnant or not pregnant.&#xD;
+&#xD;
+‘May be pregnant’ is not usually offered as a value, much less recorded in the health record, as this is every clincian’s default assumption for any woman of child-bearing age, until proven otherwise. &#xD;
+&#xD;
+Asserting that an individual is pregnant is relatively straightforward and safe to do on the basis of evidence such as a positive urine or blood test or physical examination findings. Typically, the consequences of an error in this scenario lead to overly cautious treatment choices, which are unlikely to cause clinical harm. However, the opposite situation where a clinician needs to assert that an individual who has been assigned as female at birth is not pregnant is often not a straightforward or safe determination. Incorrectly asserting that the individual is not pregnant can have significant clinical consequences if it results in clinical management choices that can cause harm to a pregnant woman or to the fetus in an unrecognised pregnancy.&#xD;
+&#xD;
+Absolute exclusion of pregnancy is possible only in limited cases, such as after the confirmed absence or removal of both ovaries and the uterus. In most other situations, clinicians can only make a determination of ‘not pregnant’ based on a combination of history taking, physical examination, diagnostic testing and clinical judgment. Any statement of pregnancy exclusion should include the clinician’s rationale or justification, which may reference contemporaneous test results, an organ inventory or a past history of diagnoses and procedures.&#xD;
+&#xD;
+An assertion should be considered accurate only at the time of assertion. For example, an assertion that an individual is pregnant is needed to diagnose an ectopic pregnancy, however they should no longer be pregnant following surgery. Similarly, an assertion that an individual is not pregnant, based on history taking and a urine pregnancy test result, may need to be revised shortly after if a blood test for pregnancy returns positive.</use>
+      <misuse>Not to be used to record summary information about a single pregnancy. Use the EVALUATION.pregnancy_summary archetype for this purpose.&#xD;
+&#xD;
+Not to be used to record the phase of an active pregnancy, such as preconception, pregnant, or postpartum. Use the EVALUATION.pregnancy_phase archetype for this purpose.&#xD;
+&#xD;
+Not to be used to record details about procedures performed during a pregnancy, for example terminations or deliveries. Use the ACTION.procedure or other relevant archetypes for this purpose.&#xD;
+&#xD;
+Not to be used in the context of questionnaire-style representations, such as self-reported data with questions like 'Are you pregnant?'. Use the openEHR-EHR-OBSERVATION.problem_screening.v1 or other relevant archetypes for this purpose.</misuse>
+      <copyright>© openEHR Foundation</copyright>
+    </details>
+  </description>
+  <translations>
+    <language>
+      <terminology_id>
+        <value>ISO_639-1</value>
+      </terminology_id>
+      <code_string>de</code_string>
+    </language>
+    <author id="name">Sarah Ballout, Natalia Strauch, Darin Leonhardt</author>
+    <author id="organisation">MHH-Hannover, Medizinische Hochschule Hannover, PLRI für medizinische Informatik/ Medizinische Hochschule</author>
+    <author id="email">ballout.sarah@mh-hannover.de, Strauch.Natalia@mh-hannover.de, leonhardt.darin@mh-hannover.de</author>
+  </translations>
+  <translations>
+    <language>
+      <terminology_id>
+        <value>ISO_639-1</value>
+      </terminology_id>
+      <code_string>nb</code_string>
+    </language>
+    <author id="name">Eli Larsen, Liv Laugen</author>
+    <author id="organisation">Universitetssykehuset Nord-Norge, ​Oslo University Hospital, Norway</author>
+    <author id="email">eli.larsen@unn.no, liv.laugen@ous-hf.no</author>
+  </translations>
+  <uid>
+    <value>20f5182a-b3e4-4da1-bdaa-6951241c558d</value>
+  </uid>
+  <archetype_id>
+    <value>openEHR-EHR-OBSERVATION.pregnancy_finding.v0</value>
+  </archetype_id>
+  <adl_version>1.4</adl_version>
+  <concept>at0000</concept>
+  <definition>
+    <rm_type_name>OBSERVATION</rm_type_name>
+    <occurrences>
+      <lower_included>true</lower_included>
+      <upper_included>true</upper_included>
+      <lower_unbounded>false</lower_unbounded>
+      <upper_unbounded>false</upper_unbounded>
+      <lower>1</lower>
+      <upper>1</upper>
+    </occurrences>
+    <node_id>at0000</node_id>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <rm_attribute_name>data</rm_attribute_name>
+      <existence>
+        <lower_included>true</lower_included>
+        <upper_included>true</upper_included>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>0</lower>
+        <upper>1</upper>
+      </existence>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>HISTORY</rm_type_name>
+        <occurrences>
+          <lower_included>true</lower_included>
+          <upper_included>true</upper_included>
+          <lower_unbounded>false</lower_unbounded>
+          <upper_unbounded>false</upper_unbounded>
+          <lower>1</lower>
+          <upper>1</upper>
+        </occurrences>
+        <node_id>at0001</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <rm_attribute_name>events</rm_attribute_name>
+          <existence>
+            <lower_included>true</lower_included>
+            <upper_included>true</upper_included>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>0</lower>
+            <upper>1</upper>
+          </existence>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>POINT_EVENT</rm_type_name>
+            <occurrences>
+              <lower_included>true</lower_included>
+              <upper_included>true</upper_included>
+              <lower_unbounded>false</lower_unbounded>
+              <upper_unbounded>false</upper_unbounded>
+              <lower>0</lower>
+              <upper>1</upper>
+            </occurrences>
+            <node_id>at0016</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <rm_attribute_name>data</rm_attribute_name>
+              <existence>
+                <lower_included>true</lower_included>
+                <upper_included>true</upper_included>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>0</lower>
+                <upper>1</upper>
+              </existence>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <lower_included>true</lower_included>
+                  <upper_included>true</upper_included>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower>1</lower>
+                  <upper>1</upper>
+                </occurrences>
+                <node_id>at0003</node_id>
+                <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+                  <rm_attribute_name>items</rm_attribute_name>
+                  <existence>
+                    <lower_included>true</lower_included>
+                    <upper_included>true</upper_included>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>0</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <lower_included>true</lower_included>
+                      <upper_included>true</upper_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower>1</lower>
+                      <upper>1</upper>
+                    </occurrences>
+                    <node_id>at0004</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <existence>
+                        <lower_included>true</lower_included>
+                        <upper_included>true</upper_included>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>0</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                        <occurrences>
+                          <lower_included>true</lower_included>
+                          <upper_included>true</upper_included>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower>1</lower>
+                          <upper>1</upper>
+                        </occurrences>
+                        <node_id />
+                        <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                          <rm_attribute_name>defining_code</rm_attribute_name>
+                          <existence>
+                            <lower_included>true</lower_included>
+                            <upper_included>true</upper_included>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower>0</lower>
+                            <upper>1</upper>
+                          </existence>
+                          <children xsi:type="C_CODE_PHRASE">
+                            <rm_type_name>CODE_PHRASE</rm_type_name>
+                            <occurrences>
+                              <lower_included>true</lower_included>
+                              <upper_included>true</upper_included>
+                              <lower_unbounded>false</lower_unbounded>
+                              <upper_unbounded>false</upper_unbounded>
+                              <lower>1</lower>
+                              <upper>1</upper>
+                            </occurrences>
+                            <node_id />
+                            <terminology_id>
+                              <value>local</value>
+                            </terminology_id>
+                            <code_list>at0005</code_list>
+                            <code_list>at0007</code_list>
+                          </children>
+                        </attributes>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <lower_included>true</lower_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0009</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <existence>
+                        <lower_included>true</lower_included>
+                        <upper_included>true</upper_included>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>0</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <rm_type_name>DV_TEXT</rm_type_name>
+                        <occurrences>
+                          <lower_included>true</lower_included>
+                          <upper_included>true</upper_included>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower>1</lower>
+                          <upper>1</upper>
+                        </occurrences>
+                        <node_id />
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="ARCHETYPE_SLOT">
+                    <rm_type_name>CLUSTER</rm_type_name>
+                    <occurrences>
+                      <lower_included>true</lower_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0019</node_id>
+                    <includes>
+                      <string_expression>archetype_id/value matches {/openEHR-EHR-CLUSTER\.clinical_evidence(-[a-zA-Z0-9_]+)*\.v1/}</string_expression>
+                      <expression xsi:type="EXPR_BINARY_OPERATOR">
+                        <type>Boolean</type>
+                        <operator>2007</operator>
+                        <precedence_overridden>false</precedence_overridden>
+                        <left_operand xsi:type="EXPR_LEAF">
+                          <type>String</type>
+                          <item xsi:type="xsd:string">archetype_id/value</item>
+                          <reference_type>attribute</reference_type>
+                        </left_operand>
+                        <right_operand xsi:type="EXPR_LEAF">
+                          <type>C_STRING</type>
+                          <item xsi:type="C_STRING">
+                            <pattern>openEHR-EHR-CLUSTER\.clinical_evidence(-[a-zA-Z0-9_]+)*\.v1</pattern>
+                          </item>
+                          <reference_type>constraint</reference_type>
+                        </right_operand>
+                      </expression>
+                    </includes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <lower_included>true</lower_included>
+                      <upper_included>true</upper_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower>0</lower>
+                      <upper>1</upper>
+                    </occurrences>
+                    <node_id>at0015</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <existence>
+                        <lower_included>true</lower_included>
+                        <upper_included>true</upper_included>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>0</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <rm_type_name>DV_TEXT</rm_type_name>
+                        <occurrences>
+                          <lower_included>true</lower_included>
+                          <upper_included>true</upper_included>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower>1</lower>
+                          <upper>1</upper>
+                        </occurrences>
+                        <node_id />
+                      </children>
+                    </attributes>
+                  </children>
+                  <cardinality>
+                    <is_ordered>false</is_ordered>
+                    <is_unique>false</is_unique>
+                    <interval>
+                      <lower_included>true</lower_included>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower>0</lower>
+                    </interval>
+                  </cardinality>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <cardinality>
+            <is_ordered>false</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <lower_included>true</lower_included>
+              <lower_unbounded>false</lower_unbounded>
+              <upper_unbounded>true</upper_unbounded>
+              <lower>0</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <rm_attribute_name>protocol</rm_attribute_name>
+      <existence>
+        <lower_included>true</lower_included>
+        <upper_included>true</upper_included>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>0</lower>
+        <upper>1</upper>
+      </existence>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>ITEM_TREE</rm_type_name>
+        <occurrences>
+          <lower_included>true</lower_included>
+          <upper_included>true</upper_included>
+          <lower_unbounded>false</lower_unbounded>
+          <upper_unbounded>false</upper_unbounded>
+          <lower>1</lower>
+          <upper>1</upper>
+        </occurrences>
+        <node_id>at0017</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <rm_attribute_name>items</rm_attribute_name>
+          <existence>
+            <lower_included>true</lower_included>
+            <upper_included>true</upper_included>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>0</lower>
+            <upper>1</upper>
+          </existence>
+          <children xsi:type="ARCHETYPE_SLOT">
+            <rm_type_name>CLUSTER</rm_type_name>
+            <occurrences>
+              <lower_included>true</lower_included>
+              <lower_unbounded>false</lower_unbounded>
+              <upper_unbounded>true</upper_unbounded>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0018</node_id>
+            <includes>
+              <string_expression>archetype_id/value matches {/.*/}</string_expression>
+              <expression xsi:type="EXPR_BINARY_OPERATOR">
+                <type>Boolean</type>
+                <operator>2007</operator>
+                <precedence_overridden>false</precedence_overridden>
+                <left_operand xsi:type="EXPR_LEAF">
+                  <type>String</type>
+                  <item xsi:type="xsd:string">archetype_id/value</item>
+                  <reference_type>attribute</reference_type>
+                </left_operand>
+                <right_operand xsi:type="EXPR_LEAF">
+                  <type>C_STRING</type>
+                  <item xsi:type="C_STRING">
+                    <pattern>.*</pattern>
+                  </item>
+                  <reference_type>constraint</reference_type>
+                </right_operand>
+              </expression>
+            </includes>
+          </children>
+          <cardinality>
+            <is_ordered>false</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <lower_included>true</lower_included>
+              <lower_unbounded>false</lower_unbounded>
+              <upper_unbounded>true</upper_unbounded>
+              <lower>0</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">Pregnancy assertion</items>
+        <items id="description">A statement or declaration by a clinician about the known pregnancy state of the individual at a specific point-in-time, to be used as the basis for clinical decision-making.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">History</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Comment</items>
+        <items id="description">Additional narrative about the pregnancy assertion, not captured in other fields.</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Pregnancy assertion</items>
+        <items id="description">A statement or declaration about the pregnancy status of the individual at a specified point in time.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Pregnant</items>
+        <items id="description">Pregnancy has been confirmed.</items>
+      </items>
+      <items code="at0007">
+        <items id="text">Not pregnant</items>
+        <items id="description">Pregnancy has been excluded, as best as can be determined.</items>
+      </items>
+      <items code="at0009">
+        <items id="text">Justification</items>
+        <items id="description">Narrative description of the justification or rationale for the assertion.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Item tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0018">
+        <items id="text">Extension</items>
+        <items id="description">Additional information required to extend the model with local content or to align with other reference models or formalisms.</items>
+        <items id="comment">For example: local information requirements; or additional metadata to align with FHIR.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Any point in time event</items>
+        <items id="description">Default, unspecified point in time event which may be explicitly defined in a template or at run-time.</items>
+      </items>
+      <items code="at0019">
+        <items id="text">Clinical evidence</items>
+        <items id="description">Structured clinical evidence supporting the assertion.</items>
+        <items id="comment">For example: laboratory test results; organ inventory; diagnoses or past procedures.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="de">
+      <items code="at0000">
+        <items id="text">Feststellung der Schwangerschaft</items>
+        <items id="description">Eine Aussage oder Feststellung eines Arztes über den bekannten Schwangerschaftszustand einer Person zu einem bestimmten Zeitpunkt, die als Grundlage für die klinische Entscheidungsfindung dienen soll.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">History</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Feststellung der Schwangerschaft</items>
+        <items id="description">Eine Aussage oder Feststellung über den Schwangerschaftsstatus einer Person zu einem bestimmten Zeitpunkt.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Schwanger</items>
+        <items id="description">Die Schwangerschaft wurde bestätigt.</items>
+      </items>
+      <items code="at0007">
+        <items id="text">Nicht schwanger</items>
+        <items id="description">Eine Schwangerschaft wurde so weit wie möglich ausgeschlossen.</items>
+      </items>
+      <items code="at0009">
+        <items id="text">Rechtfertigung</items>
+        <items id="description">Narrative Beschreibung der Rechtfertigung oder Begründung für die Feststellung.</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Kommentar</items>
+        <items id="description">Zusätzliche Informationen über die Schwangerschaft, die nicht in anderen Feldern erfasst wurden.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Jeder Zeitpunkt des Ereignisses</items>
+        <items id="description">Standardmäßiges, nicht spezifiziertes Ereignis zu einem bestimmten Zeitpunkt, das explizit in einer Vorlage oder zur Laufzeit definiert werden kann.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Item tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0018">
+        <items id="text">Erweiterungen</items>
+        <items id="description">Zusätzliche Informationen zur Erfassung lokaler Inhalte oder Anpassung an andere Referenzmodelle/Formalismen.</items>
+        <items id="comment">Zum Beispiel: Lokaler Informationsbedarf oder zusätzliche Metadaten zur Anpassung an FHIR-Ressourcen.</items>
+      </items>
+      <items code="at0019">
+        <items id="text">Klinischer Nachweis</items>
+        <items id="description">Strukturierte klinische Nachweise zur Untermauerung der Feststellung.</items>
+        <items id="comment">Zum Beispiel: Labortest Ergebnisse, Organbestand, Diagnosen oder frühere Verfahren.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="nb">
+      <items code="at0000">
+        <items id="text">Utsagn om graviditet</items>
+        <items id="description">En uttalelse eller erklæring fra en kliniker om den kjente graviditetstilstanden til individet på et bestemt tidspunkt, som skal brukes som grunnlag for klinisk beslutningstaking.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">History</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Utsagn om graviditet</items>
+        <items id="description">Et utsagn om graviditetsstatusen til den enkelte på et spesifisert tidspunkt.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Gravid</items>
+        <items id="description">Graviditet er bekreftet.</items>
+      </items>
+      <items code="at0007">
+        <items id="text">Ikke gravid</items>
+        <items id="description">Graviditet er utelukket, så godt det kan fastslås.</items>
+      </items>
+      <items code="at0009">
+        <items id="text">Begrunnelse</items>
+        <items id="description">Beskrivelse av grunnlaget for utsagnet.</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Kommentar</items>
+        <items id="description">Ytterligere beskrivelse angående utsagnet om graviditetsstatus som ikke fanges i andre felt.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Uspesifisert tidspunkthendelse</items>
+        <items id="description">Standard uspesifisert tidspunkthendelse som kan defineres mer eksplisitt i et templat eller i en applikasjon.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Item tree</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0018">
+        <items id="text">Tillegg</items>
+        <items id="description">Ytterligere informasjon som kreves for å utvide modellen med lokalt innhold eller for å tilpasse seg andre referansemodeller eller formaliteter.</items>
+        <items id="comment">For eksempel: lokale informasjonskrav, eller ytterligere metadata for og tilpasses FHIR.</items>
+      </items>
+      <items code="at0019">
+        <items id="text">Klinisk dokumentasjon</items>
+        <items id="description">Strukturert klinisk dokumentasjon som støtter utsagnet.</items>
+        <items id="comment">For eksempel: testresultater fra laboratorium, manglende organ, diagnoser eller tidligere prosedyrer.</items>
+      </items>
+    </term_definitions>
+    <term_bindings terminology="SNOMED-CT">
+      <items code="at0005">
+        <value>
+          <terminology_id>
+            <value>SNOMED-CT</value>
+          </terminology_id>
+          <code_string>77386006</code_string>
+        </value>
+      </items>
+      <items code="at0007">
+        <value>
+          <terminology_id>
+            <value>SNOMED-CT</value>
+          </terminology_id>
+          <code_string>60001007</code_string>
+        </value>
+      </items>
+    </term_bindings>
+  </ontology>
+</archetype>
+

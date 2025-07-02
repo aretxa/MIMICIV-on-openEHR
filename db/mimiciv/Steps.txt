@@ -1,0 +1,11 @@
+This is the code I used in the PostgreSQL Shell to load the MIMIC-IV database.
+
+DROP DATABASE IF EXISTS mimic;
+CREATE DATABASE mimic OWNER postgres;
+\c mimic;
+set search_path to mimic;
+\i P:/Asier/MIMIC-to-OpenEHR/MIMIC/mycode/create.sql;
+\set ON_ERROR_STOP 1
+\set mimic_data_dir 'P:/Asier/MIMIC-to-OpenEHR/MIMIC'
+\i P:/Asier/MIMIC-to-OpenEHR/MIMIC/mycode/load.sql;
+\i P:/Asier/MIMIC-to-OpenEHR/MIMIC/mycode/validate.sql;
